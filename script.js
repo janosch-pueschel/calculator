@@ -18,65 +18,79 @@ const multiplyBtn = document.getElementById("multiply-btn");
 const resultBtn = document.getElementById("result-btn");
 
 // display element
-const currentCalc = document.getElementById("current-calc")
+const currentCalc = document.getElementById("current-calc");
 
-function addToDisplay(character) {
-  currentCalc.textContent += character;
-  console.log("button clicked")
+let operatorDisplayed = false;
+
+function displayNumber(number) {
+  if (operatorDisplayed) {
+    currentCalc.textContent = "";
+    currentCalc.textContent = number;
+    operatorDisplayed = false;
+  } else {
+    currentCalc.textContent += number;
+  }
 }
 
+function displayOperator(operator) {
+  currentCalc.textContent = operator;
+  operatorDisplayed = true;
+}
+
+function displayResult() {}
+
 zeroBtn.addEventListener("click", () => {
-    addToDisplay(0)
+  displayNumber(0);
 });
 
 oneBtn.addEventListener("click", () => {
-  addToDisplay(1);
+  displayNumber(1);
 });
 
 twoBtn.addEventListener("click", () => {
-  addToDisplay(2);
+  displayNumber(2);
 });
 
 threeBtn.addEventListener("click", () => {
-  addToDisplay(3);
+  displayNumber(3);
 });
 
 fourBtn.addEventListener("click", () => {
-  addToDisplay(4);
+  displayNumber(4);
 });
 
 fiveBtn.addEventListener("click", () => {
-  addToDisplay(5);
+  displayNumber(5);
 });
 
 sixBtn.addEventListener("click", () => {
-  addToDisplay(6);
+  displayNumber(6);
 });
 
 sevenBtn.addEventListener("click", () => {
-  addToDisplay(7);
+  displayNumber(7);
 });
 
 eightBtn.addEventListener("click", () => {
-  addToDisplay(8);
+  displayNumber(8);
 });
 
 nineBtn.addEventListener("click", () => {
-  addToDisplay(9);
+  displayNumber(9);
 });
 
 addBtn.addEventListener("click", () => {
-  addToDisplay("+");
+  displayOperator("+");
 });
 
 subtractBtn.addEventListener("click", () => {
-  addToDisplay("-");
+  displayOperator("-");
 });
 
 divideBtn.addEventListener("click", () => {
-  addToDisplay("÷");
+  displayOperator("÷");
 });
 
 multiplyBtn.addEventListener("click", () => {
-  addToDisplay("×");
+  displayOperator("×");
 });
