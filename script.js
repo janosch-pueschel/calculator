@@ -79,18 +79,58 @@ nineBtn.addEventListener("click", () => {
   displayNumber(9);
 });
 
+let operation = {};
+
+function setOperator(operator) {
+  operation.operator = operator;
+}
+
+function setNumberOne() {
+  operation.numberOne = Number(currentCalc.textContent);
+}
+
+function setNumberTwo() {
+  operation.numberTwo = Number(currentCalc.textContent);
+}
+
+function operate() {
+  if (operation.operator === "+") {
+    result = operation.numberOne + operation.numberTwo;
+  } else if (operation.operator === "-") {
+    result = operation.numberOne - operation.numberTwo;
+  } else if (operation.operator === "÷") {
+    result = operation.numberOne / operation.numberTwo;
+  } else if (operation.operator === "×") {
+    result = operation.numberOne * operation.numberTwo;
+  }
+  currentCalc.textContent = result;
+}
+
 addBtn.addEventListener("click", () => {
+  setNumberOne();
+  setOperator("+");
   displayOperator("+");
 });
 
 subtractBtn.addEventListener("click", () => {
+  setNumberOne();
+  setOperator("-");
   displayOperator("-");
 });
 
 divideBtn.addEventListener("click", () => {
+  setNumberOne();
+  setOperator("÷");
   displayOperator("÷");
 });
 
 multiplyBtn.addEventListener("click", () => {
+  setNumberOne();
+  setOperator("×");
   displayOperator("×");
+});
+
+resultBtn.addEventListener("click", () => {
+  setNumberTwo();
+  operate();
 });
