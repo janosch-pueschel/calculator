@@ -16,6 +16,7 @@ const subtractBtn = document.getElementById("subtract-btn");
 const divideBtn = document.getElementById("divide-btn");
 const multiplyBtn = document.getElementById("multiply-btn");
 const resultBtn = document.getElementById("result-btn");
+const decimalBtn = document.getElementById("decimal-btn")
 
 // display element
 const currentCalc = document.getElementById("current-calc");
@@ -79,6 +80,10 @@ nineBtn.addEventListener("click", () => {
   displayNumber(9);
 });
 
+decimalBtn.addEventListener("click", () => {
+    displayNumber(".")
+})
+
 let operation = {};
 
 function setOperator(operator) {
@@ -134,3 +139,8 @@ resultBtn.addEventListener("click", () => {
   setNumberTwo();
   operate();
 });
+
+let testOne = Number("1.2")
+let testTwo = Number("0.3")
+
+console.log(testOne/testTwo)
