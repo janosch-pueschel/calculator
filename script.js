@@ -16,7 +16,7 @@ const subtractBtn = document.getElementById("subtract-btn");
 const divideBtn = document.getElementById("divide-btn");
 const multiplyBtn = document.getElementById("multiply-btn");
 const resultBtn = document.getElementById("result-btn");
-const decimalBtn = document.getElementById("decimal-btn")
+const decimalBtn = document.getElementById("decimal-btn");
 
 // display element
 const currentCalc = document.getElementById("current-calc");
@@ -81,23 +81,32 @@ nineBtn.addEventListener("click", () => {
 });
 
 decimalBtn.addEventListener("click", () => {
-    displayNumber(".")
-})
+  displayNumber(".");
+});
 
 let operation = {};
+let result;
+let resultDisplayed = false;
 
+// function to set numbers
+function setNumber() {
+  if (resultDisplayed) {
+    resultDisplayed = false;
+  } else if (!Object.hasOwn(operation, "numberOne")) {
+    operation.numberOne = Number(currentCalc.textContent);
+  } else if (!Object.hasOwn(operation, "numberTwo")) {
+    operation.numberTwo = Number(currentCalc.textContent);
+    operate();
+  }
+}
+
+// function to set operator
 function setOperator(operator) {
   operation.operator = operator;
+  console.log(operation);
 }
 
-function setNumberOne() {
-  operation.numberOne = Number(currentCalc.textContent);
-}
-
-function setNumberTwo() {
-  operation.numberTwo = Number(currentCalc.textContent);
-}
-
+// function for mathematical operations
 function operate() {
   if (operation.operator === "+") {
     result = operation.numberOne + operation.numberTwo;
@@ -108,39 +117,41 @@ function operate() {
   } else if (operation.operator === "×") {
     result = operation.numberOne * operation.numberTwo;
   }
+  operation.numberOne = result;
+  delete operation.numberTwo;
+}
+
+// function to display result
+function displayResult() {
   currentCalc.textContent = result;
+  resultDisplayed = true;
 }
 
 addBtn.addEventListener("click", () => {
-  setNumberOne();
+  setNumber();
   setOperator("+");
   displayOperator("+");
 });
 
 subtractBtn.addEventListener("click", () => {
-  setNumberOne();
+  setNumber();
   setOperator("-");
   displayOperator("-");
 });
 
 divideBtn.addEventListener("click", () => {
-  setNumberOne();
+  setNumber();
   setOperator("÷");
   displayOperator("÷");
 });
 
 multiplyBtn.addEventListener("click", () => {
-  setNumberOne();
+  setNumber();
   setOperator("×");
   displayOperator("×");
 });
 
 resultBtn.addEventListener("click", () => {
-  setNumberTwo();
-  operate();
+  setNumber();
+  displayResult();
 });
-
-let testOne = Number("1.2")
-let testTwo = Number("0.3")
-
-console.log(testOne/testTwo)
