@@ -18,11 +18,11 @@ const multiplyBtn = document.getElementById("multiply-btn");
 const resultBtn = document.getElementById("result-btn");
 const decimalBtn = document.getElementById("decimal-btn");
 
-// display element
 const currentCalc = document.getElementById("current-calc");
 
 let operatorDisplayed = false;
 
+// function to display numbers  display Element
 function displayNumber(number) {
   if (operatorDisplayed) {
     currentCalc.textContent = "";
@@ -32,13 +32,6 @@ function displayNumber(number) {
     currentCalc.textContent += number;
   }
 }
-
-function displayOperator(operator) {
-  currentCalc.textContent = operator;
-  operatorDisplayed = true;
-}
-
-function displayResult() {}
 
 zeroBtn.addEventListener("click", () => {
   displayNumber(0);
@@ -88,6 +81,12 @@ let operation = {};
 let result;
 let resultDisplayed = false;
 
+// function to display operators on display Element
+function displayOperator(operator) {
+  currentCalc.textContent = operator;
+  operatorDisplayed = true;
+}
+
 // function to set numbers
 function setNumber() {
   if (resultDisplayed) {
@@ -98,12 +97,12 @@ function setNumber() {
     operation.numberTwo = Number(currentCalc.textContent);
     operate();
   }
+  console.log(operation)
 }
 
 // function to set operator
 function setOperator(operator) {
   operation.operator = operator;
-  console.log(operation);
 }
 
 // function for mathematical operations
@@ -155,3 +154,13 @@ resultBtn.addEventListener("click", () => {
   setNumber();
   displayResult();
 });
+
+const clearAllBtn = document.getElementById("clear-btn");
+
+function clearAll() {
+  operation = {};
+  currentCalc.textContent = "";
+  resultDisplayed = false
+}
+
+clearAllBtn.addEventListener("click", clearAll)
