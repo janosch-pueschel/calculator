@@ -104,6 +104,17 @@ function setOperator(operator) {
   operation.operator = operator;
 }
 
+// function to check if result is valid or invalid
+let resultInvalid = false;
+
+function checkResult() {
+  if (!isFinite(result)) {
+    resultInvalid = true;
+    clearAll();
+    currentCalc.textContent = "invalid operation";
+  }
+}
+
 // function for mathematical operations
 function operate() {
   if (operation.operator === "+") {
@@ -115,14 +126,20 @@ function operate() {
   } else if (operation.operator === "×") {
     result = operation.numberOne * operation.numberTwo;
   }
+  console.log(result);
   operation.numberOne = result;
   delete operation.numberTwo;
+  checkResult();
 }
 
 // function to display result
 function displayResult() {
-  currentCalc.textContent = result;
-  resultDisplayed = true;
+  if (resultInvalid) {
+    resultInvalid = false;
+  } else {
+    currentCalc.textContent = result;
+    resultDisplayed = true;
+  }
 }
 
 // functions to store and display last operation
@@ -181,6 +198,9 @@ const clearAllBtn = document.getElementById("clear-btn");
 function clearAll() {
   operation = {};
   currentCalc.textContent = "";
+  storedCalc.textContent = "";
   resultDisplayed = false;
   lastOperation = [];
 }
+
+clearAllBtn.addEventListener("click", clearAll);
