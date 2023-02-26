@@ -97,7 +97,6 @@ function setNumber() {
     operation.numberTwo = Number(currentCalc.textContent);
     operate();
   }
-  console.log(operation)
 }
 
 // function to set operator
@@ -126,31 +125,53 @@ function displayResult() {
   resultDisplayed = true;
 }
 
+// functions to store and display last operation
+const storedCalc = document.getElementById("stored-calc");
+let lastOperation = [];
+let operationDisplayed = false;
+
+function storeLastOperation(operator) {
+  if (operator === "=") {
+    lastOperation.push(currentCalc.textContent);
+    lastOperation.push(operator);
+    storedCalc.textContent = lastOperation.join(" ");
+    lastOperation = [];
+  } else {
+    lastOperation.push(currentCalc.textContent);
+    lastOperation.push(operator);
+  }
+}
+
 addBtn.addEventListener("click", () => {
+  storeLastOperation("+");
   setNumber();
   setOperator("+");
   displayOperator("+");
 });
 
 subtractBtn.addEventListener("click", () => {
+  storeLastOperation("-");
   setNumber();
   setOperator("-");
   displayOperator("-");
 });
 
 divideBtn.addEventListener("click", () => {
+  storeLastOperation("÷");
   setNumber();
   setOperator("÷");
   displayOperator("÷");
 });
 
 multiplyBtn.addEventListener("click", () => {
+  storeLastOperation("×");
   setNumber();
   setOperator("×");
   displayOperator("×");
 });
 
 resultBtn.addEventListener("click", () => {
+  storeLastOperation("=");
   setNumber();
   displayResult();
 });
@@ -160,7 +181,6 @@ const clearAllBtn = document.getElementById("clear-btn");
 function clearAll() {
   operation = {};
   currentCalc.textContent = "";
-  resultDisplayed = false
+  resultDisplayed = false;
+  lastOperation = [];
 }
-
-clearAllBtn.addEventListener("click", clearAll)
