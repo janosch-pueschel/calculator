@@ -24,7 +24,10 @@ let operatorDisplayed = false;
 
 // function to display numbers  display Element
 function displayNumber(number) {
-  if (operatorDisplayed) {
+  if (currentCalc.textContent === "Error: Invalid Input") {
+    currentCalc.textContent = "";
+    currentCalc.textContent = number;
+  } else if (operatorDisplayed) {
     currentCalc.textContent = "";
     currentCalc.textContent = number;
     operatorDisplayed = false;
@@ -111,7 +114,7 @@ function checkResult() {
   if (!isFinite(result)) {
     resultInvalid = true;
     clearAll();
-    currentCalc.textContent = "invalid operation";
+    currentCalc.textContent = "Error: Invalid Input";
   }
 }
 
@@ -126,7 +129,6 @@ function operate() {
   } else if (operation.operator === "×") {
     result = operation.numberOne * operation.numberTwo;
   }
-  console.log(result);
   operation.numberOne = result;
   delete operation.numberTwo;
   checkResult();
