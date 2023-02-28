@@ -25,7 +25,7 @@ let operatorDisplayed = false;
 // function to display numbers  display Element
 function displayNumber(number) {
   if (currentCalc.textContent === "Error: Invalid Input" || resultDisplayed) {
-    clearAll()
+    clearAll();
     currentCalc.textContent = number;
   } else if (operatorDisplayed) {
     currentCalc.textContent = "";
@@ -94,6 +94,8 @@ function displayOperator(operator) {
 function setNumber() {
   if (resultDisplayed) {
     resultDisplayed = false;
+  } else if (operatorDeleted) {
+    operatorDeleted = false;
   } else if (!Object.hasOwn(operation, "numberOne")) {
     operation.numberOne = Number(currentCalc.textContent);
   } else if (!Object.hasOwn(operation, "numberTwo")) {
@@ -204,3 +206,36 @@ function clearAll() {
   resultDisplayed = false;
   lastOperation = [];
 }
+
+clearAllBtn.addEventListener("click", clearAll);
+
+const deleteBtn = document.getElementById("delete-btn");
+let operatorDeleted = false;
+
+function deleteLastInput() {
+  if (resultDisplayed) {
+    return;
+  } else if (
+    currentCalc.textContent === "+" ||
+    currentCalc.textContent === "-" ||
+    currentCalc.textContent === "÷" ||
+    currentCalc.textContent === "×"
+  ) {
+    operatorDeleted = true;
+    lastOperation.pop();
+    operation.operator = "";
+    let currentInput = currentCalc.textContent;
+    let currentInputArray = currentInput.split("");
+    currentInputArray.pop();
+    let currentInputModified = currentInputArray.join("");
+    currentCalc.textContent = currentInputModified;
+  } else {
+    let currentInput = currentCalc.textContent;
+    let currentInputArray = currentInput.split("");
+    currentInputArray.pop();
+    let currentInputModified = currentInputArray.join("");
+    currentCalc.textContent = currentInputModified;
+  }
+}
+
+deleteBtn.addEventListener("click", deleteLastInput);
