@@ -15,6 +15,7 @@ const addBtn = document.getElementById("add-btn");
 const subtractBtn = document.getElementById("subtract-btn");
 const divideBtn = document.getElementById("divide-btn");
 const multiplyBtn = document.getElementById("multiply-btn");
+const moduloBtn = document.getElementById("modulo-btn");
 const resultBtn = document.getElementById("result-btn");
 const decimalBtn = document.getElementById("decimal-btn");
 
@@ -130,6 +131,8 @@ function operate() {
     result = operation.numberOne / operation.numberTwo;
   } else if (operation.operator === "×") {
     result = operation.numberOne * operation.numberTwo;
+  } else if (operation.operator === "%") {
+    result = operation.numberOne % operation.numberTwo;
   }
   operation.numberOne = result;
   delete operation.numberTwo;
@@ -191,6 +194,13 @@ multiplyBtn.addEventListener("click", () => {
   displayOperator("×");
 });
 
+moduloBtn.addEventListener("click", () => {
+  storeLastOperation("%");
+  setNumber();
+  setOperator("%");
+  displayOperator("%");
+});
+
 resultBtn.addEventListener("click", () => {
   storeLastOperation("=");
   setNumber();
@@ -208,7 +218,6 @@ function clearAll() {
 }
 
 clearAllBtn.addEventListener("click", clearAll);
-
 
 // funtion to delete last user input
 const deleteBtn = document.getElementById("delete-btn");
