@@ -229,7 +229,7 @@ const deleteBtn = document.getElementById("delete-btn");
 let operatorDeleted = false;
 
 function deleteLastInput() {
-  if (resultDisplayed) {
+  if (resultDisplayed || currentCalc.textContent === "Error: Invalid Input") {
     return;
   } else if (
     currentCalc.textContent === "+" ||
