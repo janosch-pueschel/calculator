@@ -24,8 +24,8 @@ let operatorDisplayed = false;
 
 // function to display numbers  display Element
 function displayNumber(number) {
-  if (currentCalc.textContent === "Error: Invalid Input") {
-    currentCalc.textContent = "";
+  if (currentCalc.textContent === "Error: Invalid Input" || resultDisplayed) {
+    clearAll()
     currentCalc.textContent = number;
   } else if (operatorDisplayed) {
     currentCalc.textContent = "";
@@ -204,5 +204,3 @@ function clearAll() {
   resultDisplayed = false;
   lastOperation = [];
 }
-
-clearAllBtn.addEventListener("click", clearAll);
