@@ -209,6 +209,8 @@ function clearAll() {
 
 clearAllBtn.addEventListener("click", clearAll);
 
+
+// funtion to delete last user input
 const deleteBtn = document.getElementById("delete-btn");
 let operatorDeleted = false;
 

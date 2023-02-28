@@ -8,41 +8,41 @@
     <title>Calculator</title>
   </head>
   <body>
-    <h1>Calculator</h1>
     <div class="calculator">
       <div class="row">
-        <div class="column">
-          <button id="clear-btn">AC</button>
-          <button id="delete-btn">C</button>
-        </div>
         <div class="display">
           <div class="display--stored"><p id="stored-calc"></p></div>
           <div class="display--current"><p id="current-calc"></p></div>
         </div>
       </div>
       <div class="row">
-        <button id="seven-btn">7</button>
-        <button id="eight-btn">8</button>
-        <button id="nine-btn">9</button>
-        <button id="add-btn">+</button>
+        <button class="undo-btn" id="clear-btn">AC</button>
+        <button class="undo-btn" id="delete-btn">C</button>
+        <button class="operator-btn">%</button>
+        <button class="operator-btn" id="add-btn">+</button>
       </div>
       <div class="row">
-        <button id="four-btn">4</button>
-        <button id="five-btn">5</button>
-        <button id="six-btn">6</button>
-        <button id="subtract-btn">-</button>
+        <button class="number-btn" id="seven-btn">7</button>
+        <button class="number-btn" id="eight-btn">8</button>
+        <button class="number-btn" id="nine-btn">9</button>
+        <button class="operator-btn" id="subtract-btn">-</button>
       </div>
       <div class="row">
-        <button id="one-btn">1</button>
-        <button id="two-btn">2</button>
-        <button id="three-btn">3</button>
-        <button id="divide-btn">&#247;</button>
+        <button class="number-btn" id="four-btn">4</button>
+        <button class="number-btn" id="five-btn">5</button>
+        <button class="number-btn" id="six-btn">6</button>
+        <button class="operator-btn" id="divide-btn">&#247;</button>
       </div>
       <div class="row">
-        <button id="zero-btn">0</button>
-        <button id="decimal-btn">.</button>
-        <button id="result-btn">=</button>
-        <button id="multiply-btn">&#215;</button>
+        <button class="number-btn" id="one-btn">1</button>
+        <button class="number-btn" id="two-btn">2</button>
+        <button class="number-btn" id="three-btn">3</button>
+        <button class="operator-btn" id="multiply-btn">&#215;</button>
+      </div>
+      <div class="row">
+        <button class="number-btn" id="zero-btn">0</button>
+        <button class="number-btn" id="decimal-btn">.</button>
+        <button class="operator-btn" id="result-btn">=</button>
       </div>
     </div>
     <script src="script.js"></script>
