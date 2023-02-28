@@ -25,7 +25,12 @@ let operatorDisplayed = false;
 
 // function to display numbers  display Element
 function displayNumber(number) {
-  if (currentCalc.textContent === "Error: Invalid Input" || resultDisplayed) {
+  if (currentCalc.textContent.length > 8) {
+    return;
+  } else if (
+    currentCalc.textContent === "Error: Invalid Input" ||
+    resultDisplayed
+  ) {
     clearAll();
     currentCalc.textContent = number;
   } else if (operatorDisplayed) {
