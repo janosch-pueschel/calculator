@@ -44,7 +44,10 @@ button {
   width: 100%;
   text-align: right;
   margin-bottom: 30px;
+  padding: 10px;
+  background-color: #E3F6FF;
   color: #393e46;
+  border: #bccbd2 1px solid;
 }
 
 .display--stored {
